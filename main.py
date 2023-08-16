@@ -10,10 +10,13 @@ def meth1(num):
             pot = i
         i+=1
     end = time.time()
-    print(f"{i} Possibles Tested")
+    print(f"{i-1} Possibles Tested")
     print(f"sqrt({num}) = {pot} * sqrt({int(num / pot**2)})")
     print(f"Took: {end-start}s")
-    print(f"")
+    if end-start == 0:
+        print(f"Too fast to calculate tests per second")
+    else:
+        print(f"{int((i-1)/(end-start)*100)/100} tested per second")
 
 def meth2(num):
     start = time.time()
@@ -25,12 +28,16 @@ def meth2(num):
             break
         i-=1
     end = time.time()
-    print(f"{int(math.sqrt(num))-i} Possibles Tested")
+    print(f"{int(math.sqrt(num/2))-i} Possibles Tested")
     print(f"sqrt({num}) = {pot} * sqrt({int(num / pot**2)})")
     print(f"Took: {end-start}s")
+    if end-start == 0:
+        print(f"Too fast to calculate tests per second")
+    else:
+        print(f"{int((math.sqrt(num/2)-i)/(end-start)*100)/100} tested per second")
 
 num = int(input("Enter number under surd: "))
-print("Method 1")
+print("Method 1 (Test from 2 UP)")
 meth1(num)
-print("\nMethod 2")
+print("\nMethod 2 (Test from Max Down)")
 meth2(num)
