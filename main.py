@@ -3,9 +3,9 @@ import time
 
 def meth1(num):
     start = time.time()
-    i = 1
+    i = 2
     pot = 1
-    while i < int(math.sqrt(num)):
+    while i**2 <= num/2:
         if num % (i**2) == 0:
             pot = i
         i+=1
@@ -17,7 +17,7 @@ def meth1(num):
 
 def meth2(num):
     start = time.time()
-    i = int(math.sqrt(num))
+    i = int(math.sqrt(num/2))
     pot = 1
     while True:
         if num % (i**2) == 0:
